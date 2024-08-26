@@ -1,0 +1,22 @@
+from PIL import Image
+from io import BytesIO
+import requests
+
+TOKEN = "6738451332:AAGo1Z2erYUyAxc_rieq-Fvc2nQae1zXROI"
+chat_id = "952883191"
+# Sending text message is easy:
+message = "Sending a Telegram message from Python code..."
+url = f"https://api.telegram.org/bot {TOKEN} /sendMessage?chat id=(chat id)&text=l
+print (requests. get (url) • json ()) # this sends the message
+#Sending a picture is slightly more involved:
+img = Image. open (r"/home/pi/Desktop/IoTe/Training_Kit/testproject/image2.jpg")
+# Convert the image to a binarystream
+image_stream = BytesIO ()
+img. save (image stream, format=' PNG' )
+image stream. seek (0)
+
+# Send the image as a binary stream
+url = f"https://api.telegram.org/bot (TOKEN) / sendPhoto"
+files = {'photo': ('image.png', image stream) }
+data = ('chat id': chat id)
+print (requests. post (url, files-files,data=data) • json ())
